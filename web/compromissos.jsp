@@ -13,12 +13,12 @@
     </head>
     <body>
         <h1>Agendamento de Compromissos</h1>
-        <form action="AgendarCompromisso" id="formAgendamento" method="POST">
+        <form action="CadastroCompromissos" id="formAgendamento" method="POST">
             
             <label id="labelTituloCompromisso">Título: </label>
             <input name="textTituloCompromisso" size="45"/><br/><br/>
             
-            <label id="labelTipoCompromisso">Título: </label>
+            <label id="labelTipoCompromisso">Tipo: </label>
             <input name="textTipoCompromisso" size="45"/><br/><br/>
             
             <label id="labelDataCompromisso">Data: </label>

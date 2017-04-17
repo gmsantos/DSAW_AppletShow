@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package compromissos;
+package servlet;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -22,7 +22,7 @@ public class Compromisso {
     private String data;
     private String hora;
     private String local;
-    private String duracao;
+    private Double duracao;
     private String observacao;
     
     public Compromisso(){
@@ -31,7 +31,7 @@ public class Compromisso {
         data        = "";
         hora        = "";
         local       = "";
-        duracao     = "";
+        duracao     =  0.0;
         observacao = "";
     }
     
@@ -75,11 +75,11 @@ public class Compromisso {
         this.local = local;
     }
     
-    public String getDuracao(){
+    public Double getDuracao(){
         return duracao;
     }
     
-    public void setDuracao(String duracao){
+    public void setDuracao(Double duracao){
         this.duracao = duracao;
     }
     
@@ -106,7 +106,7 @@ public class Compromisso {
                 p.setString(3, data);
                 p.setString(4, hora);
                 p.setString(5, local);
-                p.setString(6, duracao);
+                p.setDouble(6, duracao);
                 p.setString(7, observacao);
                 p.executeUpdate();
                 retorno = true;
@@ -145,7 +145,7 @@ public class Compromisso {
                     data        = r.getString(3);
                     hora        = r.getString(4);
                     local       = r.getString(5);
-                    duracao     = r.getString(6);
+                    duracao     = r.getDouble(6);
                     observacao  = r.getString(7);
                     
                     retorno = true;

@@ -19,6 +19,10 @@
 -- Table structure for table `compromissos`
 --
 
+DROP SCHEMA IF EXISTS `DSAW`;
+CREATE SCHEMA `DSAW`;
+USE `DSAW`;
+
 DROP TABLE IF EXISTS `compromissos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package compromissos;
+package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,20 +39,27 @@ public class CadastroCompromissos extends HttpServlet {
         Compromisso compromisso = new Compromisso();
         
         try {
+            String textTituloCompromisso    = request.getParameter("textTituloCompromisso");
+            String textTipoCompromisso      = request.getParameter("textTipoCompromisso");
             String textDataCompromisso      = request.getParameter("textDataCompromisso");
             String textHoraCompromisso      = request.getParameter("textHoraCompromisso");
             String textLocalCompromisso     = request.getParameter("textLocalCompromisso");
+            Double textDuracaoCompromisso   = 
+                    Double.parseDouble(request.getParameter("textDuracaoCompromisso"));
+            String textObservacaoCompromisso = request.getParameter("textObservacaoCompromisso");
+            
+            compromisso.setTitulo(textTituloCompromisso);
+            compromisso.setTipo(textTipoCompromisso);
             compromisso.setData(textDataCompromisso);
             compromisso.setHora(textHoraCompromisso);
             compromisso.setLocal(textLocalCompromisso);
+            compromisso.setDuracao(textDuracaoCompromisso);
+            compromisso.setObservacao(textObservacaoCompromisso);
             
             if(compromisso.select()){
                 msgRetorno = "Compromisso já agendado";
             } else {
-                String textTituloCompromisso    = request.getParameter("textTituloCompromisso");
-                String textTipoCompromisso      = request.getParameter("textTipoCompromisso");
-                String textDuracaoCompromisso   = request.getParameter("textDuracaoCompromisso");
-                String textObservacaoCompromisso = request.getParameter("textObservacaoCompromisso");
+
                 SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyy");
                 SimpleDateFormat horaFormatada = new SimpleDateFormat("HH:mm");
                        
@@ -70,18 +77,15 @@ public class CadastroCompromissos extends HttpServlet {
                             msgRetorno = "Cadastro do Compromisso realizado com sucesso";
                             tituloPaginaRetorno = "Cadastro realizado com sucesso";
                         } else {
-                            msgRetorno = "Falha ao cadastrar paciente";
+                            msgRetorno = "Falha ao cadastrar compromisso";
                         }
- 
                     } else {
                         msgRetorno = "Você digitou uma data errada. Digite uma data futura.";
                     }
                 }else{
                     msgRetorno = "Todos os campos precisam ser preenchidos.";
                 }
-                
             }
-                
         } catch (Exception ex) {
                
             msgRetorno = ex.getMessage();
