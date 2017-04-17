@@ -20,7 +20,7 @@ public class ConexaoDB {
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             conexao = 
-            DriverManager.getConnection("jdbc:mysql://localhost/DSAW","root","31Exorcist#!");
+            DriverManager.getConnection("jdbc:mysql://localhost/DSAW","root","root");
         }
         catch (SQLException excecao)
         {
